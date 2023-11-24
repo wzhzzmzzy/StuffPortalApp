@@ -5,15 +5,15 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(child: Column(
+    return const Drawer(child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 38.0),
+          padding: EdgeInsets.only(top: 38.0),
           child: Row(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
               ),
               Text(
                 "Wendux",

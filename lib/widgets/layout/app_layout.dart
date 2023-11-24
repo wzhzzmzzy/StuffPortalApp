@@ -4,36 +4,45 @@ import 'package:stuff_portal/widgets/layout/app_drawer.dart';
 import 'package:stuff_portal/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
-var tabs = <Tab>[
-  Tab(text: S.current.tabNameReceiver),
-  Tab(text: S.current.tabNamePublished)
+import '../message/message_list.dart';
+
+var tabs = <MessageType>[
+  MessageType.receive,
+  MessageType.publish
 ];
 
 class AppLayout extends StatelessWidget {
-  const AppLayout({super.key, required this.child});
-
-  final Widget child;
+  const AppLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(length: tabs.length, child: Builder(builder: (BuildContext context) {
-      final TabController tabController = DefaultTabController.of(context);
-      tabController.addListener(() {
-        if (!tabController.indexIsChanging) {
+    return DefaultTabController(
+      length: tabs.length,
+      child: Builder(builder: (BuildContext context) {
+        final TabController tabController = DefaultTabController.of(context);
+        tabController.addListener(() {
+          if (!tabController.indexIsChanging) {
 
-        }
-      });
-      return Scaffold(
-        appBar: AppBar(
-          title: const SearchBar(),
-          bottom: TabBar(
-            tabs: tabs,
+          }
+        });
+        return Scaffold(
+          appBar: AppBar(
+            title: const SearchBar(),
+            bottom: TabBar(
+              tabs: tabs.map((e) => Tab(
+                text: e == MessageType.receive
+                  ? S.of(context).tabNameReceiver
+                  : S.of(context).tabNamePublished
+              )).toList(),
+            ),
           ),
-        ),
-        drawer: const AppDrawer(),
-        body: child,
-      );
-    }));
+          drawer: const AppDrawer(),
+          body: TabBarView(
+            children: tabs.map((e) => MessageList(type: e)).toList(),
+          )
+        );
+      })
+    );
   }
 }
 

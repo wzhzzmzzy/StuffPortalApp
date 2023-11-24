@@ -29,11 +29,7 @@ class StuffPortalApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
-          home: AppLayout(child: Consumer<GlobalModel>(
-            builder: (BuildContext context, GlobalModel value, Widget? child) {
-              return Text(value.filterKeyword);
-            }
-          ))
+          home: AppLayout()
         )
     );
   }
