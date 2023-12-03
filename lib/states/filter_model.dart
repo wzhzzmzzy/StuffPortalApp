@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class GlobalModel extends ChangeNotifier {
+class FilterModel extends ChangeNotifier {
   late String _filterKeyword = '';
 
   String get filterKeyword => _filterKeyword;

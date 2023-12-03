@@ -60,20 +60,20 @@ class S {
     );
   }
 
-  /// `Search something about message`
+  /// `Search something`
   String get searchBarPlaceholder {
     return Intl.message(
-      'Search something about message',
+      'Search something',
       name: 'searchBarPlaceholder',
       desc: '',
       args: [],
     );
   }
 
-  /// `Receiver`
+  /// `Received`
   String get tabNameReceiver {
     return Intl.message(
-      'Receiver',
+      'Received',
       name: 'tabNameReceiver',
       desc: '',
       args: [],
